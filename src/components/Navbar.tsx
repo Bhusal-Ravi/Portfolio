@@ -30,7 +30,7 @@ function Navbar() {
         </li>
         
         <li className=''>
-          <a className="opacity-50 hover:opacity-100" target="_blank" rel="noopener noreferrer"  href="https://drive.google.com/file/d/1uIVbC0SBpAiPLE1QD5iHqwvnbNAWlMid/view?usp=sharing">
+          <a className="opacity-50 hover:opacity-100" target="_blank" rel="noopener noreferrer"  href="https://drive.google.com/file/d/1rO2zLvt86UNo5ZKcUwZse66EAJsnj-i6/view?usp=drive_link">
             Resume
           </a>
         </li>

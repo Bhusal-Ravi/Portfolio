@@ -40,6 +40,11 @@ function Navbar_m({setMenu}:Props) {
             Education
           </a>
         </li>
+         <li className=''>
+          <a href="https://drive.google.com/file/d/1rO2zLvt86UNo5ZKcUwZse66EAJsnj-i6/view?usp=drive_link" onClick={() => setMenu(false)}>
+            Education
+          </a>
+        </li>
         </ul>
         </div>
   )
