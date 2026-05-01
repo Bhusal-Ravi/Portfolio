@@ -69,10 +69,13 @@ function Home() {
           
           
           <div className=" justify-center items-center ">
-            <img loading="lazy" className="md:hidden mb-5 opacity-40  object-cover h-20 w-full border-white shadow-white/80 shadow-2xl border  rounded-md md:h-50 md:w-80  transition-all ease-in-out duration-200    " src="profile_V3.webp"/>
+            {/* <img loading="lazy" className="md:hidden mb-5 opacity-40  object-cover h-20 w-full border-white shadow-white/80 shadow-2xl border  rounded-md md:h-50 md:w-80  transition-all ease-in-out duration-200    " src="profile_V3.webp"/> */}
+                    <video className="md:hidden z-0 mb-5 opacity-90  object-cover h-20 w-full border-white shadow-[#2F73AF] shadow-xl  border border-b-0   rounded-md md:h-50 md:w-80  transition-all ease-in-out duration-200" autoPlay loop muted playsInline>
+                      <source src="scenary.webm" type="video/webm" />
+                    </video>
           <div>
           <div>
-            <h1 className="text-lg font-bold mb-2">Ravi Bhusal , 22</h1>
+            <h1 className="text-lg font-bold z-10 mb-2">Ravi Bhusal , 22</h1>
             <SocialMedia/>
           </div>
           <p className="alin-text-bottom text-md mt-5 tracking-tighter">
