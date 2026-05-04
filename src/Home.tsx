@@ -6,8 +6,13 @@ import Projects from "./components/Projects"
 import Footer from "./components/Footer"
 import SocialMedia from "./components/SocialMedia"
 
+let lastVisitRequestAt = 0
+
 function Home() {
   const [menu,setMenu]= useState(false)
+  const [visitCount, setVisitCount] = useState<number | null>(null)
+  const [visitError, setVisitError] = useState<string | null>(null)
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:4000'
   
   const frontend: string[] = ['React','JavaScript', 'TypeScript', 'TailwindCSS', 'Vite', 'Framer'];
 
@@ -35,7 +40,7 @@ function Home() {
     }
 
 
-     useEffect(() => {
+  useEffect(() => {
     if (menu) {
       document.body.classList.add("overflow-hidden");
     } else {
@@ -46,6 +51,50 @@ function Home() {
 
     return () => document.body.classList.remove("overflow-hidden");
   }, [menu]);
+
+  useEffect(() => {
+    const runVisitCounter = async () => {
+      try {
+        const now = Date.now()
+
+        if (now - lastVisitRequestAt < 1000) {
+          return
+        }
+
+        lastVisitRequestAt = now
+
+        const storageKey = 'portfolio-visit-client-id'
+        const storedClientId = localStorage.getItem(storageKey)
+        const clientId = storedClientId ?? crypto.randomUUID()
+
+        if (!storedClientId) {
+          localStorage.setItem(storageKey, clientId)
+        }
+
+        const response = await fetch(`${apiBaseUrl}/visit`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ clientId }),
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          throw new Error(data?.error ?? 'Failed to record visit')
+        }
+
+        setVisitCount(data.visitCount)
+        setVisitError(null)
+      } catch (error) {
+        setVisitError(error instanceof Error ? error.message : 'Failed to record visit')
+      }
+    }
+
+    void runVisitCounter()
+  }, [])
+
   return <div className="  ">
     {/* Navbar */}
     <section >
@@ -64,7 +113,7 @@ function Home() {
     </section>
 
       {/* About */}
-      <section id="about" className="text-white border-b border-white/35 pb-5 justify-center items-center  flex flex-col mt-6 px-2 ">
+      <section id="about" className="text-white  border-b border-white/35 pb-5 justify-center items-center  flex flex-col mt-6 px-2 ">
         <div className=" flex flex-row px-10 max-w-7xl   ">
           
           
@@ -85,6 +134,13 @@ function Home() {
             <p className="alin-text-bottom text-md mt-2 ">
             <span className="font-bold">Open To Work</span>: Full-Time, Freelance.<span className="font-bold">Let's Talk</span>
           </p>
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-xs text-white/80">
+              <span className="font-semibold">Page visits</span>
+              <span>{visitCount === null ? 'Loading...' : visitCount}</span>
+            </p>
+            {visitError ? (
+              <p className="mt-2 text-xs text-red-300">{visitError}</p>
+            ) : null}
           </div>
           </div>
 
@@ -102,27 +158,27 @@ function Home() {
 
             <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">FrontEnd : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{frontend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md break-words  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{frontend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide  ">BackEnd : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{backend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md break-words  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{backend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">Database : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{database.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md break-words  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{database.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">Ai Tools : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{aiTools.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md break-words  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{aiTools.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide  ">Auth / Security : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{authSecurity.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md break-words  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5  "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{authSecurity.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5  "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
           </div>
