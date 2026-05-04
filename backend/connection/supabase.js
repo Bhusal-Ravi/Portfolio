@@ -35,8 +35,8 @@ const pool = new Pool({
 
 export async function ensureVisitsTable() {
   await pool.query(`
-    CREATE TABLE IF NOT EXISTS page_visits (
-      client_id text PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS site_visits (
+      site_id text PRIMARY KEY,
       visit_count integer NOT NULL DEFAULT 0,
       created_at timestamptz NOT NULL DEFAULT now(),
       updated_at timestamptz NOT NULL DEFAULT now()

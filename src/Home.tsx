@@ -13,6 +13,7 @@ function Home() {
   const [visitCount, setVisitCount] = useState<number | null>(null)
   const [visitError, setVisitError] = useState<string | null>(null)
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'https://portfolio-6nt7.onrender.com'
+  const siteId = 'bhusalravi.com.np'
   
   const frontend: string[] = ['React','JavaScript', 'TypeScript', 'TailwindCSS', 'Vite', 'Framer'];
 
@@ -63,20 +64,12 @@ function Home() {
 
         lastVisitRequestAt = now
 
-        const storageKey = 'portfolio-visit-client-id'
-        const storedClientId = localStorage.getItem(storageKey)
-        const clientId = storedClientId ?? crypto.randomUUID()
-
-        if (!storedClientId) {
-          localStorage.setItem(storageKey, clientId)
-        }
-
         const response = await fetch(`${apiBaseUrl}/visit`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ clientId }),
+          body: JSON.stringify({ siteId }),
         })
 
         const data = await response.json()

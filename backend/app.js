@@ -9,34 +9,33 @@ app.use(express.json());
 
 await ensureVisitsTable();
 
+const defaultSiteId = 'bhusalravi.com.np';
+
 app.get('/health', (_req, res) => {
   res.json({ ok: true, message: 'Backend is running' });
 });
 
 app.post('/visit', async (req, res) => {
   try {
-    const { clientId } = req.body ?? {};
-
-    if (typeof clientId !== 'string' || clientId.trim().length === 0) {
-      return res.status(400).json({ ok: false, error: 'clientId is required' });
-    }
+    const { siteId } = req.body ?? {};
+    const resolvedSiteId = typeof siteId === 'string' && siteId.trim().length > 0 ? siteId.trim() : defaultSiteId;
 
     const result = await pool.query(
       `
-        INSERT INTO page_visits (client_id, visit_count, updated_at)
+        INSERT INTO site_visits (site_id, visit_count, updated_at)
         VALUES ($1, 1, now())
-        ON CONFLICT (client_id)
+        ON CONFLICT (site_id)
         DO UPDATE SET
-          visit_count = page_visits.visit_count + 1,
+          visit_count = site_visits.visit_count + 1,
           updated_at = now()
-        RETURNING client_id, visit_count
+        RETURNING site_id, visit_count
       `,
-      [clientId.trim()],
+      [resolvedSiteId],
     );
 
     res.json({
       ok: true,
-      clientId: result.rows[0]?.client_id,
+      siteId: result.rows[0]?.site_id,
       visitCount: result.rows[0]?.visit_count ?? 0,
     });
   } catch (error) {
