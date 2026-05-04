@@ -12,7 +12,7 @@ function Home() {
   const [menu,setMenu]= useState(false)
   const [visitCount, setVisitCount] = useState<number | null>(null)
   const [visitError, setVisitError] = useState<string | null>(null)
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:4000'
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'https://portfolio-6nt7.onrender.com'
   
   const frontend: string[] = ['React','JavaScript', 'TypeScript', 'TailwindCSS', 'Vite', 'Framer'];
 
