@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <div className='py-5 border-b px-10   flex justify-center items-center text-white border-white/35'>
        <div className='w-full  flex items-center max-w-7xl   justify-center'>
-       <div className="flex  mr-1 w-full group relative transition-all duration-200 ease-in-out justify-center items-center"><img alt="Ravi Bhusal portfolio logo" className="h-15 w-20 z-20 mr-auto" src="logo_white.svg"/><img alt="" className="h-15 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-12  z-10  w-20  mr-auto" src="logo_yellow.svg"/><img alt="" className="h-15 z-5 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-24 w-20 mr-auto" src="logo_blue.svg"/></div>
+       <div className="flex  mr-1 w-full group relative transition-all duration-200 ease-in-out justify-center items-center"><img alt="Ravi Bhusal portfolio logo" className="h-12 w-16 z-20 mr-auto" src="logo_white_R.svg"/><img alt="" className="h-12 transition-all duration-200 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0 group-hover:translate-x-8  z-10  w-16  mr-auto" src="logo_yellow_A.svg"/><img alt="" className="h-12 z-5 transition-all duration-200 opacity-0 group-hover:opacity-100 ease-in-out absolute inset-0 group-hover:translate-x-16 w-16 mr-auto" src="logo_blue_V.svg"/><img alt="" className="h-12 z-5 transition-all duration-200 opacity-0 group-hover:opacity-100 ease-in-out absolute inset-0 group-hover:translate-x-24 w-16 mr-auto" src="logo_I.svg"/></div>
         <div className='ml-auto'>
         
           <ul className='flex flex-row gap-8 text-sm'>
