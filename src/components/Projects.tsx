@@ -13,7 +13,7 @@ function Projects() {
             className="border group border-white/35 rounded-md p-4 flex flex-col gap-3"
           >
             <div className=" ">
-            {project.image&& <img className="object-cover group-hover:scale-102 transform-all duration-200 ease-in-out w-full h-30 md:h-45 lg:h-55" src={`${project.image}`}/>}
+            {project.image&& <img alt={`Screenshot of ${project.name}`} loading="lazy" decoding="async" className="object-cover group-hover:scale-102 transform-all duration-200 ease-in-out w-full h-30 md:h-45 lg:h-55" src={`${project.image}`}/>}
             </div>
 
             <div className="flex flex-row items-center justify-between">

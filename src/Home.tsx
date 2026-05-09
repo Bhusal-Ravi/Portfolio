@@ -98,7 +98,7 @@ function Home() {
       <div className="flex md:hidden justify-center items-center px-5 py-2 border-b border-white/35 ">
       {menu?<div >
         <Navbar_m setMenu={setMenu}/>
-      </div>:<div className="flex border   w-full group relative transition-all duration-200 ease-in-out justify-center items-center"><img loading="lazy"  className="h-15 w-20 z-20 mr-auto" src="logo_white.svg"/><img loading="lazy"  className="h-15 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-12  z-10  w-20  mr-auto" src="logo_yellow.svg"/><img loading="lazy"  className="h-15 z-5 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-24 w-20 mr-auto" src="logo_blue.svg"/><button className="ml-auto" onClick={()=>setMenu(true)}><Menu className="text-white"/></button></div>
+      </div>:<div className="flex border   w-full group relative transition-all duration-200 ease-in-out justify-center items-center"><img alt="Ravi Bhusal portfolio logo" loading="lazy"  className="h-15 w-20 z-20 mr-auto" src="logo_white.svg"/><img alt="" loading="lazy"  className="h-15 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-12  z-10  w-20  mr-auto" src="logo_yellow.svg"/><img alt="" loading="lazy"  className="h-15 z-5 transition-all duration-200 ease-in-out absolute inset-0 group-hover:translate-x-24 w-20 mr-auto" src="logo_blue.svg"/><button className="ml-auto" onClick={()=>setMenu(true)} aria-label="Open menu"><Menu className="text-white"/></button></div>
       }
       </div>
       
@@ -112,9 +112,13 @@ function Home() {
           
           <div className=" justify-center items-center ">
             {/* <img loading="lazy" className="md:hidden mb-5 opacity-40  object-cover h-20 w-full border-white shadow-white/80 shadow-2xl border  rounded-md md:h-50 md:w-80  transition-all ease-in-out duration-200    " src="profile_V3.webp"/> */}
-                    <video className="md:hidden z-0 mb-5 opacity-90  object-cover h-20 w-full border-white shadow-[#2F73AF] shadow-xl  border border-b-0   rounded-md md:h-50 md:w-80  transition-all ease-in-out duration-200" autoPlay loop muted playsInline preload="metadata" poster="/profile_V3.webp">
-                      <source src="/scenary.webm" type="video/webm" />
-                    </video>
+                    <img
+                      alt="Portrait of Ravi Bhusal"
+                      className="md:hidden z-0 mb-5 opacity-90 object-cover h-20 w-full border-white shadow-[#2F73AF] shadow-xl border border-b-0 rounded-md md:h-50 md:w-80 transition-all ease-in-out duration-200"
+                      src="/profile_V3.webp"
+                      loading="eager"
+                      fetchPriority="high"
+                    />
           <div>
           <div>
             <h1 className="text-lg font-bold z-10 mb-2">Ravi Bhusal , 22</h1>
@@ -138,7 +142,7 @@ function Home() {
           </div>
 
           <div className="hidden md:block  max-h-fit max-w-fit   -rotate-5 group hover:rotate-0  transition-all ease-in-out duration-200   bg-white rounded-lg ">
-            <img loading="lazy" onMouseEnter={handleProfileMouseEnter} onMouseLeave={handleProfileMouseEnter} className="object-cover h-30 w-100 border border-black hover:border-2  hover:border-white   rounded-md md:h-50 md:w-80 rotate-4 transition-all ease-in-out duration-200 group-hover:rotate-0  " src="profile_V1.webp"/>
+            <img alt="Portrait of Ravi Bhusal" loading="eager" fetchPriority="high" onMouseEnter={handleProfileMouseEnter} onMouseLeave={handleProfileMouseEnter} className="object-cover h-30 w-100 border border-black hover:border-2  hover:border-white   rounded-md md:h-50 md:w-80 rotate-4 transition-all ease-in-out duration-200 group-hover:rotate-0  " src="profile_V1.webp"/>
           </div>
           </div>
         
@@ -151,27 +155,27 @@ function Home() {
 
             <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">FrontEnd : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{frontend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{frontend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide  ">BackEnd : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{backend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{backend.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">Database : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{database.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{database.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">Ai Tools : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{aiTools.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{aiTools.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
              <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide  ">Auth / Security : </h1>
-              <div className="flex flex-wrap mt-2 gap-2  items-center">{authSecurity.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5  "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{authSecurity.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5  "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
             </div>
 
           </div>

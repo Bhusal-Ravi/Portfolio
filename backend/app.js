@@ -4,7 +4,7 @@ import pool, { ensureVisitsTable } from './connection/supabase.js';
 
 const app = express();
 
-app.use(cors({ origin: 'https://bhusalravi.com.np' }));
+app.use(cors({ origin: ['https://bhusalravi.com.np','http://localhost:5173'], credentials: true }));
 app.use(express.json());
 
 await ensureVisitsTable();
