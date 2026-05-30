@@ -32,10 +32,20 @@ export const projectInfo = [
     name: "News Aggregation & Newsletter Pipeline",
     description: "End-to-end news pipeline that ingests RSS feeds, deduplicates using Voyage AI embeddings and pgvector cosine similarity, and generates newsletters via LangGraph orchestration.",
     tags: ["Node.js", "TypeScript", "LangGraph.js", "BullMQ", "PostgreSQL", "pgvector", "Voyage AI", "Tavily"],
-    live: null,
+    live: "https://newsletter.bhusalravi.com.np",
     github: "https://github.com/Bhusal-Ravi/News-Letter",
     badge: null,
     image:'newsletter.webp'
+  },
+  {
+    name: "Travel Ai",
+    description: "An AI travel planner that turns your destination, dates, and budget into a clear, personalized itinerary.",
+    tags: ["LangChain", "LangGraph", "Multi-Agent", "TypeScript"],
+    live: null,
+    github: "https://github.com/Bhusal-Ravi/Travel.Ai",
+    video: "https://tinyurl.com/yc7jx5rj",
+    badge: null,
+    image:'travelai.webp'
   },
   {
     name: "Twitter/X Automation (DiffCast)",

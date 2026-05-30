@@ -40,7 +40,7 @@ function Projects() {
               ))}
             </div>
 
-            <div className="flex flex-row gap-3 mt-1">
+            <div className="mt-auto flex flex-row flex-wrap justify-end gap-3 pt-2">
               {project.live && (
                 <a
                   href={project.live}
@@ -49,6 +49,18 @@ function Projects() {
                   className="text-xs flex flex-row justify-center items-center font-semibold border border-white px-3 py-1 rounded-sm hover:bg-white hover:text-black transition-colors"
                 >
                   Live
+                  <MoveUpRight className="ml-2" height={20} strokeWidth={1.5}/>
+                </a>
+              )}
+
+              {"video" in project && project.video && (
+                <a
+                  href={project.video}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs flex flex-row justify-center items-center border border-white/35 px-3 py-1 rounded-sm hover:bg-white/10 transition-colors"
+                >
+                  Video
                   <MoveUpRight className="ml-2" height={20} strokeWidth={1.5}/>
                 </a>
               )}
