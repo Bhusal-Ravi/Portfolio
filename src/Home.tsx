@@ -5,6 +5,7 @@ import { Menu } from "lucide-react"
 import Projects from "./components/Projects"
 import Footer from "./components/Footer"
 import SocialMedia from "./components/SocialMedia"
+import Experience from "./components/Experience"
 
 let lastVisitRequestAt = 0
 
@@ -132,10 +133,12 @@ function Home() {
           <p className="alin-text-bottom text-md mt-5 tracking-tighter">
             <span className="font-bold">I'm Ravi </span>, a software engineer from Kathmandu. I build web apps, APIs, and backend systems and occasionally go down rabbit holes with distributed systems and AI pipelines.
             Always shipping something.
+           
           </p>
             <p className="alin-text-bottom text-md mt-2 ">
             <span className="font-bold">Open To Work</span>: Full-Time, Freelance.<span className="font-bold">Let's Talk</span>
           </p>
+           <p className="border-[0.5px] group flex justify-center items-center gap-2 font-mono text-sm bg-white/5 border-white/50  max-w-fit px-2 py-1 rounded-sm mt-1"><img className="h-5 grayscale-100 transition-all duration-100 group-hover:grayscale-0  w-5" src="/gmail.svg"/>ravibh2003@gmail.com</p>
             <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-xs text-white/80">
               <span className="font-semibold">Page visits</span>
               <span>{visitCount === null ? 'Loading...' : visitCount}</span>
@@ -153,6 +156,8 @@ function Home() {
         
       </section>
 
+      {/* Experience */}
+        <Experience/>
       {/* skills */}
       <section id="skills" className="text-white border-b border-white/35 pb-5 justify-center items-center   flex flex-col mt-6 px-2 ">
         <div className="max-w-7xl w-full flex flex-col px-10     ">
