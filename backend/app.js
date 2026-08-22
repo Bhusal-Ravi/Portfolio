@@ -20,7 +20,7 @@ app.get('/health', (_req, res) => {
   if (wantsBadge) {
     return res.status(200).json({
       schemaVersion: 1,
-      label: 'bhusalravi.com.np',
+      label: 'Portfolio',
       message: healthy ? 'Currently Up and running' : 'Currently offline',
       color: healthy ? 'brightgreen' : 'red'
     });
