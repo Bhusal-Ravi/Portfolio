@@ -6,7 +6,8 @@ export const projectInfo = [
     live: "https://notification.portlify.me",
     github: "https://github.com/Bhusal-Ravi/Notification",
     badge: null,
-    image:'notification_platform.webp'
+    image:'notification_platform.webp',
+    hook: "I kept forgetting things, so now a robot nags me instead.",
   },
     {
     name: "Portlify",
@@ -15,7 +16,8 @@ export const projectInfo = [
     live: "https://portlify.me",
     github: "https://github.com/Bhusal-Ravi/Portify",
     badge: null,
-    image:'portlify.webp'
+    image:'portlify.webp',
+    hook: "Friends kept asking me to build their portfolios, so I automated myself out of the job.",
   },
   {
     name: "KeyShard",
@@ -24,7 +26,8 @@ export const projectInfo = [
     live: "https://keyshard.portlify.me",
     github: "https://github.com/Sushant-Khanal/KeyShard",
     badge: "Major Project",
-    image:'keyshard.webp'
+    image:'keyshard.webp',
+    hook: "A password manager for people who don't trust password managers — including me.",
   },
   
 
@@ -35,7 +38,8 @@ export const projectInfo = [
     live: "https://newsletter.bhusalravi.com.np",
     github: "https://github.com/Bhusal-Ravi/News-Letter",
     badge: null,
-    image:'newsletter.webp'
+    image:'newsletter.webp',
+    hook: "My morning coffee now comes with an AI-written newspaper.",
   },
   {
     name: "Travel Ai",
@@ -45,7 +49,8 @@ export const projectInfo = [
     github: "https://github.com/Bhusal-Ravi/Travel.Ai",
     video: "https://tinyurl.com/yc7jx5rj",
     badge: null,
-    image:'travelai.webp'
+    image:'travelai.webp',
+    hook: "Because trip planning means 47 open tabs and one lost soul.",
   },
   {
     name: "Twitter/X Automation (DiffCast)",
@@ -54,7 +59,8 @@ export const projectInfo = [
     live: null,
     github: "https://github.com/Bhusal-Ravi/codelogs",
     badge: null,
-    image:'codelogs.webp'
+    image:'codelogs.webp',
+    hook: "My commits tweet about themselves now.",
   },
   // {
   //   name: "Land Ownership Registration System",

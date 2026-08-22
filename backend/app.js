@@ -12,7 +12,24 @@ await ensureVisitsTable();
 const defaultSiteId = 'bhusalravi.com.np';
 
 app.get('/health', (_req, res) => {
-  res.json({ ok: true, message: 'Backend is running' });
+  const wantsBadge = _req.query.format === 'badge';
+
+  
+  const healthy = true;
+
+  if (wantsBadge) {
+    return res.status(200).json({
+      schemaVersion: 1,
+      label: 'bhusalravi.com.np',
+      message: healthy ? 'Currently Up and running' : 'Currently offline',
+      color: healthy ? 'brightgreen' : 'red'
+    });
+  }
+
+  return res.json({
+    ok: healthy,
+    message: healthy ? 'Backend is running' : 'Backend is offline'
+  });
 });
 
 app.post('/visit', async (req, res) => {

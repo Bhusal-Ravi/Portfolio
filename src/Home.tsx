@@ -16,6 +16,8 @@ function Home() {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'https://portfolio-6nt7.onrender.com'
   const siteId = 'bhusalravi.com.np'
   
+  const dataEngineering: string[] = ['Databricks', 'Python', 'PySpark', 'Delta Lake', 'Data Lakes', 'Big Data Concepts'];
+
   const frontend: string[] = ['React','JavaScript', 'TypeScript', 'TailwindCSS', 'Vite', 'Framer'];
 
   const backend: string[] = ['Node.js', 'Express', 'Socket.io', 'BullMQ', 'Docker', 'GitHub Actions', 'Vercel', 'Render'];
@@ -162,6 +164,11 @@ function Home() {
       <section id="skills" className="text-white border-b border-white/35 pb-5 justify-center items-center   flex flex-col mt-6 px-2 ">
         <div className="max-w-7xl w-full flex flex-col px-10     ">
           <h1 className="text-lg font-bold mr-auto">Tech Stack</h1>
+
+            <div className="mt-5 mr-auto">
+              <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">Data Engineering : </h1>
+              <div className="flex flex-wrap mt-2 gap-2  items-center">{dataEngineering.map((item)=>(<div className="bg-white flex flex-row relative justify-center items-center px-2 py-1 group  rounded-lg" key={item}><p className="font-bold absolute hidden group-hover:flex -translate-y-10  bg-white py-2 px-5 rounded-md wrap-break-word  whitespace-normal  justify-center items-center   text-black text-xs">{item}</p><img alt={`${item} logo`} loading="lazy" onError={(e)=>onImageError(item,e)} className="object-cover h-5 w-5 "  src={`https://cdn.simpleicons.org/${item.replace(/\s+/g, '').toLowerCase()}`}/></div>))} </div>
+            </div>
 
             <div className="mt-5 mr-auto">
               <h1 className="flex flex-row font-semibold text-sm tracking-wide   ">FrontEnd : </h1>
